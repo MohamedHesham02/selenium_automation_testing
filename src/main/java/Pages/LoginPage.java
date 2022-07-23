@@ -1,0 +1,26 @@
+package Pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class LoginPage {
+    public WebDriver driver;
+    public By userNameField = By.id("username");
+    public By passwordField = By.id("password");
+    public By loginButton = By.cssSelector("#login button");
+
+    public LoginPage(WebDriver driver){
+        this.driver = driver;
+    }
+    public void setUsername(String username){
+        driver.findElement(userNameField).sendKeys(username);
+    }
+    public void setPassword(String password){
+        driver.findElement(passwordField).sendKeys(password);
+    }
+
+    public SecureAreaPage ClickLogin(){
+        driver.findElement(loginButton).click();
+        return new SecureAreaPage(driver);
+    }
+}
